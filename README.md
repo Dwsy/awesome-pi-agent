@@ -2,8 +2,8 @@
 
 # awesome-pi-agent
 
-Concise, curated resources for extending and integrating the [pi coding agent](https://shittycodingagent.ai).
-(Yes, it was tempting to call it `shitty-list`)
+Concise, curated resources for extending and integrating the [pi coding agent](https://shittycodingagent.ai)
+(Yes, it was tempting to call it `shitty-list`).
 
 ## Primary project
 
