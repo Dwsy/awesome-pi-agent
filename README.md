@@ -62,8 +62,7 @@ Deep links into the official pi-mono repository:
 
 - [Docs directory](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent/docs) — Usage, CLI reference, SDK, RPC, sessions, and compaction
 - [Package README](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/README.md) — High-level package README and development notes
-- [Hooks reference](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/hooks.md) — Hook API, lifecycle events, and example hooks
-- [Custom tools guide](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/custom-tools.md) — Authoring guide for tools callable by the LLM
+- [Extensions guide](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/extensions.md) — Hooks and custom tools API reference
 - [Theme guide](https://github.com/badlogic/pi-mono/blob/main/packages/coding-agent/docs/theme.md) — Theme schema, color tokens, and examples
 - [Examples directory](https://github.com/badlogic/pi-mono/tree/main/packages/coding-agent/examples) — Working examples for hooks, custom tools, and SDK usage
 - [Web UI utilities](https://github.com/badlogic/pi-mono/tree/main/packages/web-ui) — Provider dialogs and model discovery utilities
