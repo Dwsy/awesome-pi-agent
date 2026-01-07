@@ -2,7 +2,19 @@
 
 All notable additions, removals, and changes to the awesome-pi-agent list.
 
-## 2026-01-07
+## 2026-01-07 (Latest Update)
+
+### Added
+- **oracle** extension to **shitty-extensions** collection - Get second opinions from alternative AI models without switching contexts
+
+### Validated
+- All 10+ major community projects remain active and recently updated
+- All GitHub links verified working (HTTP 200)
+- No archived or abandoned projects detected
+
+---
+
+## 2026-01-07 (Previous Session)
 
 ### Added
 - Expanded **michalvavra/agents** with sublists:

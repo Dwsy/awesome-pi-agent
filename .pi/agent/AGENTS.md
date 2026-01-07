@@ -23,43 +23,150 @@ When this agent is launched:
 
 ### 4. Update Workflow
 
-#### Step 1: Run Discord Parser
+The standard workflow for updating awesome-pi-agent. Execute in this order:
+
+#### Step 1: Run Discord Scraper
 ```bash
-./discord_scraping/run-tracker.sh
+cd discord_scraping
+./run-tracker.sh
 ```
 
-#### Step 2: Review New Repositories
-For each new repository found:
-- Check if it's actually pi-agent related (not just a mention)
-- Check if it's a fork without unique content
-- Check if it's actively maintained (commits within last year)
-- Verify it has documentation/README
+**What this does:**
+- Scans Discord channels for new GitHub links since last run
+- Filters for pi-agent related content
+- Saves results to `data/runs/TIMESTAMP/`
+- Compares new findings against current README.md
 
-#### Step 3: Check Existing Entries
-For all entries currently in README.md:
-- Verify links are still valid (not 404)
-- Check if collections have new items to add to sublists
-- Check if descriptions are still accurate
-- Look for repositories that have been archived or abandoned
+**Output to review:**
+- Check `discord_scraping/data/runs/LATEST/repos.json` for new repositories
+- Verify entries are actually pi-agent related (not false positives)
 
-#### Step 4: Research New Entries
-For repositories that should be added:
-- Read the README to understand what it does
-- Identify if it's a single tool or collection
-- If collection, enumerate all items for sublists
-- Write concise, accurate descriptions
-- Determine correct category (Extensions, Skills, Providers, etc.)
+#### Step 2: Parse and Validate New Links
+For each new repository found in Discord scraper results:
 
-#### Step 5: Update Files
-1. Update README.md with new entries (keep alphabetical order within sections)
-2. Log changes in CHANGELOG.md with date and reasoning
-3. Commit with descriptive message
+**Validation checklist:**
+- [ ] Repository is actively maintained (commits within last 12 months)
+- [ ] Has a README or documentation
+- [ ] Is actually pi-agent related (not just mentioned in passing)
+- [ ] Is not a duplicate of existing entries
+- [ ] Is not a fork without unique contributions
+- [ ] Check GitHub API: `curl -s https://api.github.com/repos/OWNER/REPO | jq`
 
-#### Step 6: Create PR
-- Create feature branch (format: `feature/update-YYYY-MM-DD`)
-- Push changes
-- Create PR with summary of additions/changes
-- Include in PR body: what was added, what was checked, any entries that need attention
+**For collections (repos with multiple tools/skills):**
+- [ ] List all sub-items with direct links
+- [ ] Verify each sub-item has a description
+- [ ] Check if any sub-items are new/updated
+- [ ] Update sublists if collection structure changed
+
+**For existing entries:**
+- [ ] Verify links still work (no 404s)
+- [ ] Check if descriptions are still accurate
+- [ ] Look for new sub-items added to collections
+- [ ] Check for archived or abandoned projects
+- [ ] Verify alphabetical ordering within section
+
+#### Step 3: Update README.md
+
+**Process:**
+1. Add new entries to appropriate section (Extensions, Skills, Tools, etc.)
+2. Maintain alphabetical order within each section
+3. Keep entries to one-line format: `[name](link) — description`
+4. For collections, add sublists with individual items and specific links
+5. Update descriptions if necessary (keep concise: 5-20 words)
+
+**Format examples:**
+```markdown
+# Single entry
+- [tool-name](https://github.com/user/repo) — Brief description
+
+# Collection entry
+- [collection-name](https://github.com/user/repo) — Collection description
+  - [item-1](specific-link) — Item description
+  - [item-2](specific-link) — Item description
+```
+
+**Quality checks:**
+- Run link checker if available: `mlc README.md`
+- Verify no duplicate entries
+- Verify entries are alphabetically sorted
+- Check for proper markdown formatting
+
+#### Step 4: Update CHANGELOG.md
+
+**Format:**
+```markdown
+## YYYY-MM-DD
+
+- Added [entry-name] - Brief reason/context
+- Updated [entry-name] - What changed and why
+- Removed [entry-name] - Why it was removed (archived, etc.)
+```
+
+**Details to include:**
+- What new entries were added
+- Why they were added ("Found in Discord discussion", "Community submission", etc.)
+- What existing entries were updated and why
+- Any entries removed and justification
+
+#### Step 5: Commit and Push
+
+**Create feature branch:**
+```bash
+git checkout -b feature/update-$(date +%Y-%m-%d)
+```
+
+**Stage and commit:**
+```bash
+git add README.md CHANGELOG.md
+git commit -m "Update awesome list - $(date +%Y-%m-%d)
+
+- Added X new entries
+- Updated Y existing entries
+- Removed Z entries
+
+Discovered via Discord scraper and manual validation."
+```
+
+**Push to remote:**
+```bash
+git push -u origin feature/update-$(date +%Y-%m-%d)
+```
+
+#### Step 6: Create and Test PR
+
+**Verify CI passes:**
+- GitHub Actions link-checker workflow must pass
+- Wait for CI to complete before creating PR
+- If checks fail, fix broken links and push again
+
+**Create PR:**
+```bash
+gh pr create \
+  --title "Update awesome list - $(date +%Y-%m-%d)" \
+  --body "## Changes
+
+### Added
+- [entry1] - description
+- [entry2] - description
+
+### Updated
+- [entry3] - what changed
+
+### Validation
+- [x] Discord scraper run completed
+- [x] New entries validated (actively maintained, documented)
+- [x] Existing entries checked (links valid, descriptions current)
+- [x] Collections reviewed for new sub-items
+- [x] README.md formatted and sorted correctly
+- [x] CHANGELOG.md updated with details
+- [x] CI link-checker passes"
+```
+
+**Before merging:**
+- Await user approval (do not merge without asking)
+- Ask: "The PR is ready. May I merge it to main?"
+- After approval, merge PR
+- Verify merge was successful
 
 ## Quality Standards
 

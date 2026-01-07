@@ -36,13 +36,14 @@ Extensions are TypeScript/JavaScript modules that enhance pi-agent functionality
   - [session-color](https://github.com/qualisero/rhubarb-pi/blob/main/docs/session-color.md) — Colored band in footer to visually distinguish sessions
   - [safe-git](https://github.com/qualisero/rhubarb-pi/blob/main/docs/safe-git.md) — Require approval before dangerous git operations
 - [shitty-extensions](https://github.com/hjanuschka/shitty-extensions) — Community extensions collection
-  - [memory-mode](https://github.com/hjanuschka/shitty-extensions#memory-modets) — Save instructions to AGENTS.md with AI-assisted integration
-  - [plan-mode](https://github.com/hjanuschka/shitty-extensions#plan-modets) — Read-only exploration mode for safe code exploration
-  - [handoff](https://github.com/hjanuschka/shitty-extensions#handoffts) — Transfer context to new focused sessions
-  - [usage-bar](https://github.com/hjanuschka/shitty-extensions#usage-barts) — AI provider usage statistics with status polling
-  - [ultrathink](https://github.com/hjanuschka/shitty-extensions#ultrathinkts) — Rainbow animated effect with Knight Rider shimmer
-  - [status-widget](https://github.com/hjanuschka/shitty-extensions#status-widgetts) — Persistent provider status indicator in footer
   - [cost-tracker](https://github.com/hjanuschka/shitty-extensions#cost-trackerts) — Session spending analysis from pi logs
+  - [handoff](https://github.com/hjanuschka/shitty-extensions#handoffts) — Transfer context to new focused sessions
+  - [memory-mode](https://github.com/hjanuschka/shitty-extensions#memory-modets) — Save instructions to AGENTS.md with AI-assisted integration
+  - [oracle](https://github.com/hjanuschka/shitty-extensions#oraclests) — Get second opinion from alternative AI models without switching contexts
+  - [plan-mode](https://github.com/hjanuschka/shitty-extensions#plan-modets) — Read-only exploration mode for safe code exploration
+  - [status-widget](https://github.com/hjanuschka/shitty-extensions#status-widgetts) — Persistent provider status indicator in footer
+  - [ultrathink](https://github.com/hjanuschka/shitty-extensions#ultrathinkts) — Rainbow animated effect with Knight Rider shimmer
+  - [usage-bar](https://github.com/hjanuschka/shitty-extensions#usage-barts) — AI provider usage statistics with status polling
 
 ---
 
@@ -59,6 +60,12 @@ Skills are reusable workflows described in natural language (SKILL.md format) th
   - [transcribe](https://github.com/badlogic/pi-skills/tree/main/transcribe) — Speech-to-text transcription via Groq Whisper API
   - [vscode](https://github.com/badlogic/pi-skills/tree/main/vscode) — VS Code integration for diffs and file comparison
   - [youtube-transcript](https://github.com/badlogic/pi-skills/tree/main/youtube-transcript) — Fetch YouTube video transcripts
+
+---
+
+## Tools & Utilities
+
+- [codemap](https://github.com/kcosr/codemap) — Compact, token-aware codebase maps for LLMs and coding agents (TypeScript/JavaScript symbol extraction, markdown structure)
 
 ---
 
