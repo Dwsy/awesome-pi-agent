@@ -25,6 +25,7 @@ Extensions are TypeScript/JavaScript modules that enhance pi-agent functionality
   - [checkpoint](https://github.com/prateekmedia/pi-hooks/tree/main/checkpoint) — Git-based checkpoint system for restoring code state when branching conversations
   - [lsp](https://github.com/prateekmedia/pi-hooks/tree/main/lsp) — Language Server Protocol integration with auto-diagnostics and on-demand queries
   - [permission](https://github.com/prateekmedia/pi-hooks/tree/main/permission) — Layered permission control with four levels (off, low, medium, high)
+- [pi-canvas](https://github.com/jyaunches/pi-canvas) — Interactive TUI canvases (calendar, document, flights) rendered inline using native pi TUI
 - [pi-interview-tool](https://github.com/nicobailon/pi-interview-tool) — Web-based form tool with keyboard navigation, themes, and image attachments
 - [pi-rewind-hook](https://github.com/nicobailon/pi-rewind-hook) — Rewind file changes with git-based checkpoints and conversation branching
 - [rhubarb-pi](https://github.com/qualisero/rhubarb-pi) — Collection of small extensions for pi agent
