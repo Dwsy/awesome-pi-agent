@@ -4,6 +4,9 @@ All notable additions, removals, and changes to the awesome-pi-agent list.
 
 ## 2026-01-09 (Latest Update)
 
+### Added
+- **pi-canvas** (jyaunches/pi-canvas) - Interactive TUI canvases (calendar, document, flights) rendered inline using native pi TUI
+
 ### Removed
 - **pi-ralph** (Whamp/pi-ralph) - Repository no longer exists (404 error)
 

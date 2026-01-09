@@ -2,6 +2,27 @@
 
 You are maintaining the [awesome-pi-agent](https://github.com/qualisero/awesome-pi-agent) curated list of pi coding agent resources.
 
+## Quick Command: List Update
+
+When the user requests a "list update", execute this complete workflow:
+
+1. **Run Discord scraper**: `cd discord_scraping && ./run-tracker.sh`
+2. **Gather all new URLs**: Parse `discord_scraping/data/runs/LATEST/repos.json`
+3. **Validate new entries**: Check each URL is actively maintained, documented, pi-agent related, not duplicate
+4. **Add validated entries to README.md**: Place in appropriate section, maintain alphabetical order
+5. **Parse all existing URLs**: Check every link in README.md for validity, new sub-items in collections, changes worth noting
+6. **Update sublists**: If collections have new items, add them with proper formatting
+7. **Sort and format**: Ensure alphabetical order within sections, proper markdown formatting
+8. **Update CHANGELOG.md**: Document all changes with date, context, and reasoning
+9. **Test with link checker**: Run `npm run check-links` or CI equivalent to ensure all links are valid
+10. **Create feature branch**: `git checkout -b feature/update-$(date +%Y-%m-%d)`
+11. **Commit changes**: Stage README.md and CHANGELOG.md with descriptive commit message
+12. **Push and create PR**: Push branch and create PR with detailed change summary
+13. **Wait for CI**: Ensure GitHub Actions link-checker passes
+14. **Open PR in browser**: Ask user "Open PR in browser? (y/n)" and open if approved
+
+This is a comprehensive update workflow that should be executed end-to-end when requested.
+
 ## Core Principles
 
 ### 1. Keep README.md Clean
