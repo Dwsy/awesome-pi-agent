@@ -14,6 +14,33 @@ NC='\033[0m'
 
 echo -e "${GREEN}Discord Pi-Agent Resource Tracker${NC}\n"
 
+# Heuristic noise filter for repo-root URLs.
+# The Discord scraper can surface many GitHub links that are irrelevant for this awesome list
+# (e.g., forks of pi-mono, GitHub infrastructure, user attachment buckets).
+# This filter only affects the *reporting* in this script, not the underlying scrape data.
+should_ignore_repo() {
+    local repo="$1"
+
+    # Ignore forks of pi-mono (keep the official repo)
+    if [[ "$repo" == */pi-mono && "$repo" != "badlogic/pi-mono" ]]; then
+        return 0
+    fi
+
+    # Ignore GitHub infra / non-resource links
+    case "$repo" in
+        apps/github-actions) return 0 ;;
+        user-attachments/assets) return 0 ;;
+        qualisero/awesome-pi-agent) return 0 ;;
+    esac
+
+    # Ignore repos that look like auto-generated gists/ids (32 hex chars)
+    if [[ "$repo" =~ /[0-9a-f]{32}$ ]]; then
+        return 0
+    fi
+
+    return 1
+}
+
 # Run scraper
 node "$SCRIPT_DIR/scraper.js" "$@"
 
@@ -26,6 +53,10 @@ if [ -f "$PROJECT_ROOT/README.md" ] && [ -f "$AGGREGATE_REPOS" ]; then
     NEW_REPOS=$(cat "$AGGREGATE_REPOS" | \
         jq -r 'keys[]' 2>/dev/null | \
         while read repo; do
+            [ -z "$repo" ] && continue
+            if should_ignore_repo "$repo"; then
+                continue
+            fi
             url="https://github.com/$repo"
             if ! grep -q "$url" "$PROJECT_ROOT/README.md" 2>/dev/null; then
                 echo "$repo|$url"
